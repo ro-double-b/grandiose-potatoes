@@ -9,21 +9,34 @@ class Profile extends React.Component {
 			currentUser: 'hard-coded-user', // this.props.currentUser?
 			allMessages: [],
 			currentMessages: [],
-			showLoading: true
+			showLoading: true,
 		}
 	}
 
-	// componentDidMount() {
-	// 	getMessages
-	// }
+	componentDidMount() {
+		getUsers()
+			.then((users) => {
+				this.setState({
+					allUsers: users,
+				});
+			}).then(() => {
+				getMessages()
+					.then((messages) => {
+						this.setState({
+							allMessages: messages,
+							showLoading: false,
+						});
+					});
+			});
+	}
 
-	// handleClick(e) {
-	// 	const otherUser = e.target.textContet;
+	handleClick(e) {
+		const otherUser = e.target.textContet;
 
-	// 	this.setState({
-	// 		currentMessages: this.filterMessages(this.state.allMessages, otherUser);
-	// 	});
-	// }
+		this.setState({
+			currentMessages: filterMessages(this.state.allMessages, otherUser),
+		});
+	}
 
 	render () {
 		return (
