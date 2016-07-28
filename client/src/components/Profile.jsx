@@ -14,14 +14,18 @@ class Profile extends React.Component {
 	}
 
 	componentDidMount() {
+		// ASYNC, Y U DO THIS
+		// first load users
 		getUsers()
 			.then((users) => {
 				this.setState({
 					allUsers: users,
 				});
 			}).then(() => {
+				//once users has been loaded, load messages
 				getMessages()
 					.then((messages) => {
+						//once messages have been loaded remove loading notification
 						this.setState({
 							allMessages: messages,
 							showLoading: false,
