@@ -1,19 +1,21 @@
 function getUsers() {
-  return new Promise((resolve, reject)) $.ajax({
-    type: 'GET',
-    url: "http://localhost:8080/users",
-    success: (data) => {
-      console.log('Got user data from server')
-      let users = [];
-      for (let i = 0; i < data.length; i++) {
-        users.push(data[i].username);
-      } 
-      resolve(data);
-    },
-    error: (err) => {
-      console.log('Unable to retrieve users: ', err);
-      reject('Unable to retrieve users:', err);
-    },
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'GET',
+      url: "http://localhost:8080/users",
+      success: (data) => {
+        console.log('Got user data from server')
+        let users = [];
+        for (let i = 0; i < data.length; i++) {
+          users.push(data[i].username);
+        } 
+        resolve(data);
+      },
+      error: (err) => {
+        console.log('Unable to retrieve users: ', err);
+        reject('Unable to retrieve users:', err);
+      },
+    });
   });
 };
 
