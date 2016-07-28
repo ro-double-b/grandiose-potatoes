@@ -1,5 +1,5 @@
 import React from 'react';
-import { getPreSignedUrl, getSupportedTypes, getQuestions, putObjectToS3, postVideoUrl } from '../recordUtil.js';
+import { getPreSignedUrl, getSupportedTypes, getQuestions, putObjectToS3, postVideoUrl } from '../util/recordUtil.js';
 import Questions from './Questions.jsx';
 
 class Record extends React.Component {

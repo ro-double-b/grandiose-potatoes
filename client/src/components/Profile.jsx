@@ -5,18 +5,34 @@ class Profile extends React.Component {
 		super(props)
 
 		this.state = {
-			currentUser: 'hard-coded-user'
+			allUsers: [],
+			currentUser: 'hard-coded-user', // this.props.currentUser?
+			allMessages: [],
+			currentMessages: [],
+			showLoading: true
 		}
 	}
+
+	// componentDidMount() {
+	// 	getMessages
+	// }
+
+	// handleClick(e) {
+	// 	const otherUser = e.target.textContet;
+
+	// 	this.setState({
+	// 		currentMessages: this.filterMessages(this.state.allMessages, otherUser);
+	// 	});
+	// }
 
 	render () {
 		return (
 			<div className="container">
 	      <div className="sidebar">
 	      	<p className="sidebar-entry">USERS</p>
-	      	<p className="sidebar-entry">Ryan</p>
-	      	<p className="sidebar-entry">Robb</p>
-	      	<p className="sidebar-entry">John Cena</p>
+	      	<p className="sidebar-entry" onClick={this.handleClick} >Ryan</p>
+	      	<p className="sidebar-entry" onClick={this.handleClick} >Robb</p>
+	      	<p className="sidebar-entry" onClick={this.handleClick} >John Cena</p>
 	      </div>
 	      
 	      <div className="main">
