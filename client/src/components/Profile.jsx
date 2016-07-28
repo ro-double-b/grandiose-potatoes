@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { getUsers, getMessages, filterMessages } from '../util/profileUtil.js';
 class Profile extends React.Component {
 	constructor(props) {
 		super(props)
