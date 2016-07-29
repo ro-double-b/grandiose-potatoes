@@ -1,7 +1,9 @@
 const questionsController = require('./controllers/questionsController.js');
 const videosController = require('./controllers/videosController.js');
 const homeController = require('./controllers/homeController.js');
-const authController =require('./controllers/authController.js');
+const authController = require('./controllers/authController.js');
+const messageController = require('./controllers/messageController.js');
+
 const router = require('express').Router();
 
 router.get('/api/questions', questionsController.getQuestions);
@@ -13,6 +15,10 @@ router.post('/api/videos', videosController.createVideo);
 
 router.post('/api/signup', authController.signup);
 router.post('/api/login', authController.login);
+
+router.get('/api/users', messageController.getUsers);
+router.get('/api/messages', messageController.getMessages);
+router.post('/api/messages', messageController.createMessage);
 
 // Send homepage when users route to videos or record endpoint
 // React Router will handle showing the appropriate views
