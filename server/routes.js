@@ -20,7 +20,8 @@ router.get('/videos/*', homeController.sendHome);
 router.get('/record', homeController.sendHome);
 router.get('/login', homeController.sendHome);
 router.get('/signup', homeController.sendHome);
-router.get('/*', homeController.redirectHome)
+router.get('/logout', homeController.sendHome);
+router.get('/*', homeController.redirectHome);
 
 // TODO
 // Handle unknown routes;
