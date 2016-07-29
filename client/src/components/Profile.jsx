@@ -83,8 +83,10 @@ class Profile extends React.Component {
               <li><a className="collection-item light-blue-text">John Cena</a></li>
             </ul>
           </div>
-
-          <MessageStream currentUser={this.state.currentUser} messages={messages} />
+          
+          <div className="col s9 main">
+            <MessageStream currentUser={this.state.currentUser} messages={messages} />
+          </div>
         </div>
       </div>
     );
