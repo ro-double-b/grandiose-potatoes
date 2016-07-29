@@ -44,7 +44,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     // /////////////////////////////////
-    //    POST REQUEST FORMAT         //
+    //    POST REQUEST DATA FORMAT    //
     //                                //
     //     info = {                   //
     //       url: url,                //
