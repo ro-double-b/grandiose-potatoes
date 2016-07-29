@@ -13,6 +13,7 @@ router.post('/api/videos', videosController.createVideo);
 
 router.post('/api/signup', authController.signup);
 router.post('/api/login', authController.login);
+router.post('/api/logout', authController.logout);
 
 // Send homepage when users route to videos or record endpoint
 // React Router will handle showing the appropriate views
@@ -21,7 +22,6 @@ router.get('/record', homeController.sendHome);
 router.get('/login', homeController.sendHome);
 router.get('/signup', homeController.sendHome);
 router.get('/logout', homeController.sendHome);
-router.get('/*', homeController.redirectHome);
 
 // TODO
 // Handle unknown routes;

@@ -53,6 +53,12 @@ function hasSession(req) {
   return req.session ? !!req.session.user : false;
 }
 
+function logout(req, res) {
+  req.session.regenerate((err) => {
+    res.send('/');
+  });
+}
+
 function checkUser(req, res, next) {
   if (!hasSession(req)) {
     res.redirect('/');
@@ -100,4 +106,5 @@ module.exports = {
   signup,
   login,
   checkUser,
+  logout,
 };
