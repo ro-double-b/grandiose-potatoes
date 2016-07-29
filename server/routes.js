@@ -25,6 +25,6 @@ router.get('/signup', homeController.sendHome);
 // Handle unknown routes;
 // router.get(*, errorHandler);
 
-router.get('/profile', homeController.sendHome);
+router.get('/profile', authController.checkUser, homeController.sendHome);
 
 module.exports = router;
