@@ -2,7 +2,7 @@ function getUsers() {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: 'GET',
-      url: "http://localhost:8080/users",
+      url: "http://localhost:3000/users",
       success: (data) => {
         console.log('Got user data from server')
         let users = [];
@@ -23,7 +23,7 @@ function getMessages() {
   return new Promise ((resolve, reject) => {
     $.ajax({
       type: 'GET',
-      url: "http://localhost:8080/messages",
+      url: "http://localhost:3000/messages",
       success: (data) => {
         console.log('Got messages data from server')
         resolve(data);
