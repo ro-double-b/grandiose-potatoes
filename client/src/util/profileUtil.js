@@ -2,7 +2,7 @@ function getUsers() {
   return new Promise((resolve, reject) => {
     $.ajax({
       type: 'GET',
-      url: "http://localhost:3000/users",
+      url: "/api/users",
       success: (data) => {
         console.log('Got user data from server')
         let users = [];
@@ -23,7 +23,7 @@ function getMessages() {
   return new Promise ((resolve, reject) => {
     $.ajax({
       type: 'GET',
-      url: "http://localhost:3000/messages",
+      url: "/api/messages",
       success: (data) => {
         console.log('Got messages data from server')
         resolve(data);
@@ -36,17 +36,17 @@ function getMessages() {
   });
 };
 
-function filterMessages(messages, otherUser) {
+function filterMessages(messages, currentUser, otherUser) {
   let container = [];
   messages.forEach((message) => {
-    if (message.Receiver.username === otherUser && message.Sender.username === this.state.currentUser) {
+    if (message.Receiver.username === otherUser && message.Sender.username === currentUser) {
       container.push({
         url: message.url,
         type: message.type,
         createdAt: message.createdAt,
-        username: this.state.currentUser
+        username: currentUser
       });
-    } else if (message.Receiver.username === this.state.currentUser && message.Sender.username === otherUser){
+    } else if (message.Receiver.username === currentUser && message.Sender.username === otherUser){
       container.push({
         url: message.url,
         type: message.type,
