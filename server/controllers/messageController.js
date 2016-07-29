@@ -2,10 +2,12 @@ const db = require('../db/db.js');
 const session = require('express-session');
 
 function getUsers(req, res) {
+  const currentUser = req.session.user;
+
   db.User.findAll({
     where: {
       username: {
-        $ne: req.session.user,
+        $ne: currentUser,
       },
     },
   })

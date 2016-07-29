@@ -5,8 +5,10 @@ function getUsers() {
       url: "/api/users",
       success: (data) => {
         console.log('Got user data from server');
+        console.log(data);
         const users = [];
         for (let i = 0; i < data.length; i++) {
+          console.log(data[i].username);
           users.push(data[i].username);
         }
         resolve(data);
