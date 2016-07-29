@@ -43,22 +43,17 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // ASYNC, Y U DO THIS
-    const info = {
-      url: 'test',
-      type: 'vid',
-      senderName: 'ryan',
-      receiverName: 'Robb',
-    };
-    // console.log('test hit');
-    // first load users
-    createMessage(info)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log('POST error: ', err);
-      });
+    // /////////////////////////////////
+    //    POST REQUEST FORMAT         //
+    //                                //
+    //     info = {                   //
+    //       url: url,                //
+    //       type: type,              //
+    //       senderName: sender,      //
+    //       receiverName: receiver,  //
+    //     };                         //
+    //                                //
+    // /////////////////////////////////
 
     Promise.all([getUsers(), getMessages()])
       .then((values) => {
@@ -69,29 +64,6 @@ class Profile extends React.Component {
         });
       })
       .catch(console.error.bind(console));
-    //   });
-    // getUsers()
-    //   .then((users) => {
-    //     this.setState({
-    //       allUsers: users,
-    //     });
-    //     console.log('USERS: ', users);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   })
-    //   .then(() => {
-    //     // once users has been loaded, load messages
-    //     getMessages()
-    //       .then((messages) => {
-    //         // once messages have been loaded remove loading notification
-    //         this.setState({
-    //           allMessages: messages,
-    //           showLoading: false,
-    //         });
-    //         console.log('MESSAGES: ', messages);
-    //       });
-    //   });
   }
 
   handleClick(e) {

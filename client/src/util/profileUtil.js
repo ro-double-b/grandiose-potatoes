@@ -59,11 +59,6 @@ function filterMessages(messages, currentUser, otherUser) {
 }
 
 function createMessage(info) {
-  console.log('TEST POST', info);
-  // const data = {
-  //   info,
-  // };
-
   return new Promise((resolve, reject) => {
     $.ajax({
       type: 'POST',
