@@ -1,0 +1,37 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.sidebar {
+  flex: 0 0 200px;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+.message-box {
+  padding: 0px;
+}
+
+.message-stream {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+.message-stream li {
+  position: relative;
+  margin: 8px;
+  max-width: 65%;
+  clear: both;
+}
+
+.message-stream li.user-other {
+  float: left;
+}
+
+.message-stream li.user-me {
+  float: right;
+}
