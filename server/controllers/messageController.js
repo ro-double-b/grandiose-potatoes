@@ -2,8 +2,6 @@ const db = require('../db/db.js');
 const session = require('express-session');
 
 function getUsers(req, res) {
-  // console.log('Session: ', req.session);
-  // console.log('User: ', req.session.user);
   db.User.findAll({
     where: {
       username: {
@@ -29,10 +27,8 @@ function getMessages(req, res) {
 }
 
 function createMessage(req, res) {
-  // ?
   const type = req.body.type;
   const url = req.body.url;
-
 
   function getSender() {
     return db.User.findOne({
@@ -64,21 +60,9 @@ function createMessage(req, res) {
     })
     .catch(console.error.bind(console))
     .then(() => {
-    // res.send({
-    //   success: 'message created',
-    // });
       res.send('success');
     });
 }
-
-// db.User.findOne({
-//   attribute: ['id', 'username'],
-//   where: {
-//     username: ["Robb"],
-//   },
-// }).then((data) => {
-//   console.log('Name :', data.username, ' ,ID: ', data.id);
-// });
 
 module.exports = {
   getUsers,
