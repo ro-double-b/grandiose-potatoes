@@ -1,34 +1,57 @@
 import React from 'react';
 
+import MessageStream from './MessageStream';
+
+const messages = [
+  {
+    url: 'http://materializecss.com/images/sample-1.jpg',
+    type: 'image',
+    createdAt: '2016-07-26',
+    username: 'Robb',
+  },
+  {
+    url: 'http://materializecss.com/images/sample-1.jpg',
+    type: 'image',
+    createdAt: '2016-07-27',
+    username: 'Greg',
+  },
+  {
+    url: 'http://materializecss.com/images/sample-1.jpg',
+    type: 'image',
+    createdAt: '2016-07-28',
+    username: 'Robb',
+  },
+];
+
+
 class Profile extends React.Component {
-	constructor(props) {
-		super(props)
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentUser: 'Greg',
+    };
+  }
 
-		this.state = {
-			currentUser: 'hard-coded-user'
-		}
-	}
+  render() {
+    return (
+      <div>
+        <div className="row">
+          <h3>Messages</h3>
+        </div>
+        <div className="row message-box">
+          <div className="col s3">
+            <ul className="collection">
+              <li><a className="collection-item light-blue-text">Ryan</a></li>
+              <li><a className="collection-item light-blue-text">Robb</a></li>
+              <li><a className="collection-item light-blue-text">John Cena</a></li>
+            </ul>
+          </div>
 
-	render () {
-		return (
-			<div className="container">
-	      <div className="sidebar">
-	      	<p className="sidebar-entry">USERS</p>
-	      	<p className="sidebar-entry">Ryan</p>
-	      	<p className="sidebar-entry">Robb</p>
-	      	<p className="sidebar-entry">John Cena</p>
-	      </div>
-	      
-	      <div className="main">
-	        <ul className="message-list">
-	        	<li className="current-user">@greg: video, url: goodmorning</li>
-	        	<li className="current-user">@greg: video, url: goodnight</li>
-	        	<li className="other-user">@ryan: video, url: goodmorning</li>
-	        </ul>
-	      </div>
-	    </div>
-		);
-	}
-};
+          <MessageStream currentUser={this.state.currentUser} messages={messages} />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Profile;
