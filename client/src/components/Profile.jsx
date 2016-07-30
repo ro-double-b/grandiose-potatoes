@@ -146,6 +146,7 @@ class Profile extends React.Component {
       this.setState({
         gifs: data.data,
       });
+      console.log(this.state.gifs);
     });
   }
 
@@ -182,6 +183,7 @@ class Profile extends React.Component {
             showGifSearch={this.state.showGifSearch}
             currentUser={this.state.currentUser}
             messages={this.state.currentMessages}
+            gifs={this.state.gifs}
           />
         </div>
         <div className="fixed-action-btn">

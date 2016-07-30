@@ -19,21 +19,21 @@ class MessageStream extends React.Component {
     }, 1);
   }
 
-  componentWillUpdate() {
-    // Before update, store whether the user is already at the bottom
-    const thisNode = ReactDOM.findDOMNode(this);
-    this.setState({
-      atScrollBottom: thisNode.scrollTop + thisNode.offsetHeight === thisNode.scrollHeight,
-    });
-  }
+  // componentWillUpdate() {
+  //   // Before update, store whether the user is already at the bottom
+  //   const thisNode = ReactDOM.findDOMNode(this);
+  //   this.setState({
+  //     atScrollBottom: thisNode.scrollTop + thisNode.offsetHeight === thisNode.scrollHeight,
+  //   });
+  // }
 
-  componentDidUpdate() {
-    // If the user was already at the bottom, scroll to the bottom
-    if (this.state.atScrollBottom) {
-      const thisNode = ReactDOM.findDOMNode(this);
-      thisNode.scrollTop = thisNode.scrollHeight;
-    }
-  }
+  // componentDidUpdate() {
+  //   // If the user was already at the bottom, scroll to the bottom
+  //   if (this.state.atScrollBottom) {
+  //     const thisNode = ReactDOM.findDOMNode(this);
+  //     thisNode.scrollTop = thisNode.scrollHeight;
+  //   }
+  // }
 
   render() {
     return (
@@ -47,7 +47,7 @@ class MessageStream extends React.Component {
           this.props.showVideoRecorder ? <InlineRecorder /> : null
         }
         {
-          this.props.showGifSearch ? <GifSearch /> : null
+          this.props.showGifSearch ? <GifSearch gifs={this.props.gifs} /> : null
         }
       </ul>
     );
@@ -59,6 +59,7 @@ MessageStream.propTypes = {
   showGifSearch: React.PropTypes.bool,
   currentUser: React.PropTypes.string,
   messages: React.PropTypes.array,
+  gifs: React.PropTypes.array,
 };
 
 export default MessageStream;

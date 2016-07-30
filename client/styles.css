@@ -33,10 +33,10 @@
   box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5);
 }
 
-.message-stream img {
+/*.message-stream img {
   height: 360px;
   width: 480px;
-}
+}*/
 
 .message-stream li.user-other {
   float: left;
@@ -69,25 +69,20 @@
 }
 
 .gif {
-  width: 159px;
-  height: 159px;
+  margin-left:12px;
+  margin-top:12px;
+  width: 144px;
+  height: 104px;
   overflow: hidden;
   float: left;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
-
 }
 
-/*:hover .gif {
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-};*/
-
 .gif-container {
+  background-color: black;
+  float: right;
   width: 480px;
   height:360px;
   overflow-y: scroll;
-  border: solid black 1px;
+  margin: 15px;
+  box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5)
 }
