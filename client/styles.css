@@ -19,13 +19,23 @@
 .message-stream {
   height: 600px;
   overflow-y: scroll;
+  margin: 0.5rem 0 1rem 0;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
 }
 
 .message-stream li {
-  position: relative;
-  margin: 8px;
-  max-width: 65%;
+  height: 360px;
+  width: 480px;
   clear: both;
+  margin: 15px;
+  box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5);
+}
+
+.message-stream img {
+  height: 360px;
+  width: 480px;
 }
 
 .message-stream li.user-other {
@@ -42,4 +52,16 @@
 
 .noSession {
   /*visibility: visible;*/
+}
+
+.recorder {
+  position: relative;
+  float: right;
+  height: 360px;
+  width: 480px;
+  background: black;
+}
+
+.recorder canvas {
+  position: absolute;
 }
