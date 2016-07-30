@@ -19,7 +19,9 @@ class Gif extends React.Component {
 
   render() {
     return (
-      <img onClick={this.sendGif} src={this.props.gifUrl} alt="gif" className="gif" />
+      <div>
+        <img className="gif-item" onClick={this.sendGif} src={this.props.gifUrl} alt="gif" className="gif" />
+      </div>
     );
   }
 }

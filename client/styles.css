@@ -25,18 +25,13 @@
   border-radius: 2px;
 }
 
-.message-stream li {
+.message-stream li div div video {
   height: 360px;
   width: 480px;
   clear: both;
   margin: 15px;
   box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5);
 }
-
-/*.message-stream img {
-  height: 360px;
-  width: 480px;
-}*/
 
 .message-stream li.user-other {
   float: left;
@@ -77,6 +72,15 @@
   float: left;
 }
 
+.gif-item {
+  position: absolute;
+  margin-left:12px;
+}
+
+.gif-ind-container{
+  position: relative;
+  display: block;
+}
 
 .gif-container {
   background-color: black;
@@ -85,7 +89,8 @@
   height:360px;
   overflow-y: scroll;
   margin: 15px;
-  box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5)
+  box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5);
+  /*position: absolute;*/
 }
 
 .collection{
@@ -98,7 +103,7 @@
   float: right;
 }
 
-li .card .card-image img {
+li .card .card-image {
   height: auto;
   width: auto;
   margin: 0;

@@ -100,7 +100,6 @@ class Profile extends React.Component {
       currentMessages: filterMessages(this.state.allMessages, this.state.currentUser, otherUser),
       otherUser,
     });
-
     console.log(this.state.currentMessages);
   }
 
