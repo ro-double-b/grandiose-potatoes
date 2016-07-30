@@ -69,7 +69,25 @@
 }
 
 .gif {
-  width: 250px;
+  width: 159px;
+  height: 159px;
+  overflow: hidden;
   float: left;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+
 }
 
+/*:hover .gif {
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+};*/
+
+.gif-container {
+  width: 480px;
+  height:360px;
+  overflow-y: scroll;
+  border: solid black 1px;
+}
