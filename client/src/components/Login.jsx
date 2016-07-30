@@ -1,5 +1,6 @@
 import React from 'react';
 const Router = require('react-router');
+import SkyLight from 'react-skylight'
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -8,10 +9,12 @@ export default class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
+      modalOpen: false
     };
     this.handelUsernameChange = this.handelUsernameChange.bind(this);
     this.handelPasswordChange = this.handelPasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.test = this.test.bind(this);
   }
 
   handelUsernameChange(event) {
@@ -26,6 +29,12 @@ export default class Login extends React.Component {
     });
   }
 
+  test(data) {
+    // if(data === 'error') {
+    this.refs.simpleDialog.show()
+    // }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     $.ajax({
@@ -35,8 +44,10 @@ export default class Login extends React.Component {
         username: this.state.username, password: this.state.username,
       },
     }).done(function(path){
+      if (path !== 'error') {
       Router.browserHistory.push(path);
-    });
+      }
+    }).done(this.test())
   }
 
   render() {
@@ -59,9 +70,13 @@ export default class Login extends React.Component {
               </div>
             </div>
             <button className="waves-effect waves-light btn blue darken-1">Login</button>
+            <button onClick={this.test}>Open Modal</button>
             <p>Not a user? <a href="signup">SignUp</a></p>
           </form>
         </div>
+        <SkyLight hideOnOverlayClicked ref="simpleDialog" title="Error">
+          There was an error Logging you in, Please try again
+        </SkyLight>
       </div>
     );
   }

@@ -97,7 +97,7 @@ function login(req, res) {
         }
       });
     } else { // user is not in db
-      res.send('/login');
+      res.send('error');
     }
   });
 }
