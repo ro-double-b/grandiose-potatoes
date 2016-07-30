@@ -39,11 +39,15 @@ class Profile extends React.Component {
       allMessages: [],
       currentMessages: [],
       showLoading: true,
+      videoButtonStyle: { display: "none" },
+      showVideoRecorder: false,
     };
 
     console.log('currentMessages: ', this.state.currentMessages);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.handleCancelVideoClick = this.handleCancelVideoClick.bind(this);
+    this.handleUserClick = this.handleUserClick.bind(this);
+    this.handleVideoClick = this.handleVideoClick.bind(this);
   }
 
   componentDidMount() {
@@ -59,7 +63,13 @@ class Profile extends React.Component {
     //                                //
     // /////////////////////////////////
 
-
+    // const info = {
+    //   url: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+    //   type: "vid",
+    //   senderName: "John Cena",
+    //   receiverName: "ryan",
+    // };
+    // createMessage(info);
     Promise.all([getUsers(), getCurrentUser(), getMessages()])
       .then((values) => {
         console.log(values[1].username);
@@ -73,15 +83,29 @@ class Profile extends React.Component {
       .catch(console.error.bind(console));
   }
 
-  handleClick(e) {
+  handleUserClick(e) {
     const otherUser = e.target.textContent;
-    console.log(e.target.textContent);
-    console.log(this.state.currentUser);
+    // console.log(e.target.textContent);
+    // console.log(this.state.currentUser);
     this.setState({
       currentMessages: filterMessages(this.state.allMessages, this.state.currentUser, otherUser),
     });
 
     console.log(this.state.currentMessages);
+  }
+
+  handleVideoClick() {
+    this.setState({
+      videoButtonStyle: { right: "150px" },
+      showVideoRecorder: true,
+    });
+  }
+
+  handleCancelVideoClick() {
+    this.setState({
+      videoButtonStyle: { display: "none" },
+      showVideoRecorder: false,
+    });
   }
 
   startRec() {
@@ -106,17 +130,44 @@ class Profile extends React.Component {
             <ul className="collection">
               {
                 this.state.allUsers.map(user => (
-                  <User handleClick={this.handleClick} otherUserName={user} />
+                  <User handleClick={this.handleUserClick} otherUserName={user} />
                 ))
               }
             </ul>
           </div>
 
-          <MessageStream currentUser={this.state.currentUser} messages={this.state.currentMessages} />
+          <MessageStream
+            showVideoRecorder={this.state.showVideoRecorder}
+            currentUser={this.state.currentUser}
+            messages={this.state.currentMessages}
+          />
+        </div>
+        <div className="fixed-action-btn">
+          <a className="btn-floating btn-large blue">
+            <i className="large material-icons">send</i>
+          </a>
+          <ul>
+            <li><a className="btn-floating blue"><i className="material-icons">gif</i></a></li>
+            <li onClick={this.handleVideoClick}>
+              <a className="btn-floating blue"><i className="material-icons">videocam</i></a>
+            </li>
+          </ul>
+        </div>
+        <div className="fixed-action-btn horizontal" style={this.state.videoButtonStyle} >
+          <a className="btn-floating btn-large red">
+            <i className="large material-icons">videocam</i>
+          </a>
+          <ul>
+            <li onClick={this.handleCancelVideoClick} ><a className="btn-floating red"><i className="material-icons">not_interested</i></a></li>
+            <li><a className="btn-floating red">POST</a></li>
+            <li><a className="btn-floating red"><i className="material-icons">replay</i></a></li>
+            <li><a className="btn-floating red"><i className="material-icons">stop</i></a></li>
+            <li><a className="btn-floating red"><i className="material-icons">album</i></a></li>
+          </ul>
+
         </div>
       </div>
     );
   }
 }
-
 export default Profile;
