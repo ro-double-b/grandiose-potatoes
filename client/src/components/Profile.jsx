@@ -41,13 +41,21 @@ class Profile extends React.Component {
       showLoading: true,
       videoButtonStyle: { display: "none" },
       showVideoRecorder: false,
+      gifSearchStyle: { visibility: "hidden" },
+      showGifSearch: false,
+      gifSearch: "",
+      gifs: [],
     };
 
-    console.log('currentMessages: ', this.state.currentMessages);
+    // console.log('currentMessages: ', this.state.currentMessages);
 
     this.handleCancelVideoClick = this.handleCancelVideoClick.bind(this);
     this.handleUserClick = this.handleUserClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
+    this.handleGifClick = this.handleGifClick.bind(this);
+    this.handleCancelGifClick = this.handleCancelGifClick.bind(this);
+    this.handelGifChange = this.handelGifChange.bind(this);
+    this.handelGifSearch = this.handelGifSearch.bind(this);
   }
 
   componentDidMount() {
@@ -108,6 +116,39 @@ class Profile extends React.Component {
     });
   }
 
+  handleGifClick() {
+    this.setState({
+      gifSearchStyle: { visibility: "visible" },
+      showGifSearch: true,
+    });
+  }
+
+  handleCancelGifClick() {
+    this.setState({
+      gifSearchStyle: { visibility: "hidden" },
+      showGifSearch: false,
+    });
+  }
+
+  handelGifChange(event) {
+    this.setState({
+      gifSearch: event.target.value,
+    });
+  }
+
+  handelGifSearch() {
+    const search = this.state.gifSearch;
+    $.ajax({
+      type: "GET",
+      url: `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC`,
+    })
+    .done((data) => {
+      this.setState({
+        gifs: data.data,
+      });
+    });
+  }
+
   startRec() {
     console.log('ayyyy start the video lmaoooo');
   }
@@ -138,6 +179,7 @@ class Profile extends React.Component {
 
           <MessageStream
             showVideoRecorder={this.state.showVideoRecorder}
+            showGifSearch={this.state.showGifSearch}
             currentUser={this.state.currentUser}
             messages={this.state.currentMessages}
           />
@@ -147,7 +189,9 @@ class Profile extends React.Component {
             <i className="large material-icons">send</i>
           </a>
           <ul>
-            <li><a className="btn-floating blue"><i className="material-icons">gif</i></a></li>
+            <li>
+              <a onClick={this.handleGifClick} className="btn-floating blue"><i className="material-icons">gif</i></a>
+            </li>
             <li onClick={this.handleVideoClick}>
               <a className="btn-floating blue"><i className="material-icons">videocam</i></a>
             </li>
@@ -164,7 +208,14 @@ class Profile extends React.Component {
             <li><a className="btn-floating red"><i className="material-icons">stop</i></a></li>
             <li><a className="btn-floating red"><i className="material-icons">album</i></a></li>
           </ul>
-
+        </div>
+        <div style={this.state.gifSearchStyle}>
+          <div className="input-field col s5">
+            <input id="gifSearch" type="text" onChange={this.handelGifChange} />
+            <label htmlFor="gifSearch">Gif</label>
+          </div>
+          <button onClick={this.handelGifSearch} className="waves-effect waves-light btn blue darken-1">Search Gif</button>
+          <button onClick={this.handleCancelGifClick} className="waves-effect waves-light btn blue darken-1">Cancel</button>
         </div>
       </div>
     );

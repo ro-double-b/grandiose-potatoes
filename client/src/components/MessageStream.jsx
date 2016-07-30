@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import MessageStreamItem from './MessageStreamItem';
 import InlineRecorder from './InlineRecorder';
+import GifSearch from './GifSearch';
 
 class MessageStream extends React.Component {
   constructor(props) {
@@ -45,6 +46,9 @@ class MessageStream extends React.Component {
         {
           this.props.showVideoRecorder ? <InlineRecorder /> : null
         }
+        {
+          this.props.showGifSearch ? <GifSearch /> : null
+        }
       </ul>
     );
   }
@@ -52,6 +56,7 @@ class MessageStream extends React.Component {
 
 MessageStream.propTypes = {
   showVideoRecorder: React.PropTypes.bool,
+  showGifSearch: React.PropTypes.bool,
   currentUser: React.PropTypes.string,
   messages: React.PropTypes.array,
 };
