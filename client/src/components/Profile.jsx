@@ -41,6 +41,8 @@ class Profile extends React.Component {
       showLoading: true,
     };
 
+    console.log('currentMessages: ', this.state.currentMessages);
+
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -57,9 +59,10 @@ class Profile extends React.Component {
     //                                //
     // /////////////////////////////////
 
+
     Promise.all([getUsers(), getMessages()])
       .then((values) => {
-        console.log(values[0].map(user => user.username));
+        console.log(values[1]);
         this.setState({
           allUsers: values[0].map(user => user.username),
           allMessages: values[1],
@@ -72,16 +75,25 @@ class Profile extends React.Component {
   handleClick(e) {
     const otherUser = e.target.textContent;
     console.log(e.target.textContent);
-
+    console.log(this.state.currentUser);
     this.setState({
       currentMessages: filterMessages(this.state.allMessages, this.state.currentUser, otherUser),
     });
+
+    console.log(this.state.currentMessages);
+  }
+
+  startRec() {
+    console.log('ayyyy start the video lmaoooo');
+  }
+
+  stopRec() {
+    console.log('stop the video, u w0t m8?');
   }
 
   // <li><a onClick={this.handleClick} className="collection-item light-blue-text">Ryan</a></li>
   // <li><a onClick={this.handleClick} className="collection-item light-blue-text">Robb</a></li>
   // <li><a onClick={this.handleClick} className="collection-item light-blue-text">John Cena</a></li>
-  // handleClick={this.handleClick}
   render() {
     return (
       <div>
@@ -91,14 +103,15 @@ class Profile extends React.Component {
         <div className="row message-box">
           <div className="col s3">
             <ul className="collection">
-              {this.state.allUsers.map(user => (
-                <User otherUserName={user} />
-                )
-              )}
+              {
+                this.state.allUsers.map(user => (
+                  <User handleClick={this.handleClick} otherUserName={user} />
+                ))
+              }
             </ul>
           </div>
 
-          <MessageStream currentUser={this.state.currentUser} messages={this.state.allMessages} />
+          <MessageStream currentUser={this.state.currentUser} messages={this.state.currentMessages} />
         </div>
       </div>
     );
