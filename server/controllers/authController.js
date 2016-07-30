@@ -49,6 +49,24 @@ function createSession(req, res, user) {
   });
 }
 
+function hasSession(req) {
+  return req.session ? !!req.session.user : false;
+}
+
+function logout(req, res) {
+  req.session.regenerate((err) => {
+    res.send('/');
+  });
+}
+
+function checkUser(req, res, next) {
+  if (!hasSession(req)) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+}
+
 function signup(req, res) {
   getUser(req.body.username)
   .then((user) => {
@@ -87,4 +105,6 @@ function login(req, res) {
 module.exports = {
   signup,
   login,
+  checkUser,
+  logout,
 };

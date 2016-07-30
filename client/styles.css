@@ -35,3 +35,11 @@
 .message-stream li.user-me {
   float: right;
 }
+
+.session {
+  /*visibility: hidden;*/
+}
+
+.noSession {
+  /*visibility: visible;*/
+}

@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router';
 import App from './components/app.jsx';
 import Record from './components/Record.jsx';
 import Login from './components/Login.jsx';
+import Logout from './components/Logout.jsx';
 import Signup from './components/Signup.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
 import Profile from './components/Profile.jsx';
@@ -13,6 +14,7 @@ export default (
     <Route path="videos/:id" component={VideoPlayer} />
     <Route path="profile" component={Profile} />
     <Route path="login" component={Login} />
+    <Route path="logout" component={Logout} />
     <Route path="signup" component={Signup} />
   </Route>
 );
