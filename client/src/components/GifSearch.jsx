@@ -1,5 +1,6 @@
 import React from 'react';
 import Gif from './Gif';
+
 // const Router = require('react-router');
 
 function GifSearch(props) {
