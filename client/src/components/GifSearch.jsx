@@ -29,13 +29,13 @@ export default class GifSeach extends React.Component {
   render() {
     return (
       <div className="col s8 offset-s2">
-        <ul className="col s8 offset-s2">
+        <div className="col s8 offset-s2">
           {
             this.state.gifs.map((gif) => (
               <Gif gifUrl={gif.images.fixed_height.url} />
             ))
           }
-        </ul>
+        </div>
         <h2 className="header center blue-text blue-darken-1">Search GIf</h2>
         <br />
         <div className="row">

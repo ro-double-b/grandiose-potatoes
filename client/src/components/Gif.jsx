@@ -4,9 +4,7 @@ function Gif(props) {
   const url = props.gifUrl;
 
   return (
-    <li>
-      <img src={url} alt="gif" />
-    </li>
+    <img src={url} alt="gif" className="gif" />
   );
 }
 

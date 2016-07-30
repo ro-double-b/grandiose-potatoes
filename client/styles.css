@@ -35,3 +35,8 @@
 .message-stream li.user-me {
   float: right;
 }
+
+.gif {
+  width: 250px;
+  float: left;
+}
