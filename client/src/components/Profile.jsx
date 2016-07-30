@@ -45,7 +45,7 @@ class Profile extends React.Component {
       showGifSearch: false,
       gifSearch: "",
       gifs: [],
-      otherUser: '',
+      otherUser: null,
     };
 
     // console.log('currentMessages: ', this.state.currentMessages);

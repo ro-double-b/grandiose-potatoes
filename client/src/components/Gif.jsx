@@ -8,7 +8,6 @@ class Gif extends React.Component {
   }
 
   sendGif() {
-    console.log(this.props.otherUser);
     const info = {
       url: this.props.gifUrl,
       type: "gif",
