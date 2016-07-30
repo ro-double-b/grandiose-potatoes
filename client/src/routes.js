@@ -6,7 +6,7 @@ import Login from './components/Login.jsx';
 import Signup from './components/Signup.jsx';
 import VideoPlayer from './components/VideoPlayer.jsx';
 import Profile from './components/Profile.jsx';
-import Gif from './components/Gif.jsx';
+import GifSearch from './components/GifSearch.jsx';
 
 export default (
   <Route path="/" component={App}>
@@ -15,6 +15,6 @@ export default (
     <Route path="profile" component={Profile} />
     <Route path="login" component={Login} />
     <Route path="signup" component={Signup} />
-    <Route path="gif" component={Gif} />
+    <Route path="gif" component={GifSearch} />
   </Route>
 );
