@@ -62,6 +62,7 @@ class Profile extends React.Component {
     //     };                         //
     //                                //
     // /////////////////////////////////
+
     // const info = {
     //   url: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
     //   type: "vid",
@@ -162,6 +163,7 @@ class Profile extends React.Component {
             <li><a className="btn-floating red"><i className="material-icons">stop</i></a></li>
             <li><a className="btn-floating red"><i className="material-icons">album</i></a></li>
           </ul>
+
         </div>
       </div>
     );

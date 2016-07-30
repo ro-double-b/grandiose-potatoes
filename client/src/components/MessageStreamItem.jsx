@@ -7,7 +7,6 @@ function MessageStreamItem(props) {
   // "http://materializecss.com/images/sample-1.jpg"
   // <img src="http://materializecss.com/images/sample-1.jpg" alt="Video message" />
   // console.log(props.message);
-
   return (
     <li className={className}>
       <div className="card">

@@ -22,6 +22,11 @@ router.get('/api/currentuser', messageController.getCurrentUser);
 router.get('/api/messages', messageController.getMessages);
 router.post('/api/messages', messageController.createMessage);
 
+router.get('/api/users', messageController.getUsers);
+router.get('/api/currentuser', messageController.getCurrentUser);
+router.get('/api/messages', messageController.getMessages);
+router.post('/api/messages', messageController.createMessage);
+
 // Send homepage when users route to videos or record endpoint
 // React Router will handle showing the appropriate views
 router.get('/videos/*', homeController.sendHome);
