@@ -11,9 +11,15 @@ class MessageStream extends React.Component {
     this.state = {
       atScrollBottom: true,
     };
+
+    setTimeout(() => {
+      const thisNode = ReactDOM.findDOMNode(this);
+      thisNode.scrollTop = thisNode.scrollHeight;
+    }, 1);
   }
 
   componentWillUpdate() {
+    // Before update, store whether the user is already at the bottom
     const thisNode = ReactDOM.findDOMNode(this);
     this.setState({
       atScrollBottom: thisNode.scrollTop + thisNode.offsetHeight === thisNode.scrollHeight,
@@ -21,6 +27,7 @@ class MessageStream extends React.Component {
   }
 
   componentDidUpdate() {
+    // If the user was already at the bottom, scroll to the bottom
     if (this.state.atScrollBottom) {
       const thisNode = ReactDOM.findDOMNode(this);
       thisNode.scrollTop = thisNode.scrollHeight;
@@ -29,7 +36,7 @@ class MessageStream extends React.Component {
 
   render() {
     return (
-      <ul className="collection message-stream">
+      <ul className="message-stream">
         {
           this.props.messages.map(message => (
             <MessageStreamItem currentUser={this.props.currentUser} message={message} key={message.createdAt} />
