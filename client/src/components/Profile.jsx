@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getUsers, getMessages, filterMessages, createMessage } from '../util/profileUtil.js';
+import { getUsers, getCurrentUser, getMessages, filterMessages, createMessage } from '../util/profileUtil.js';
 
 import User from './User';
 
@@ -60,12 +60,13 @@ class Profile extends React.Component {
     // /////////////////////////////////
 
 
-    Promise.all([getUsers(), getMessages()])
+    Promise.all([getUsers(), getCurrentUser(), getMessages()])
       .then((values) => {
-        console.log(values[1]);
+        console.log(values[1].username);
         this.setState({
           allUsers: values[0].map(user => user.username),
-          allMessages: values[1],
+          currentUser: values[1].username,
+          allMessages: values[2],
           showLoading: false,
         });
       })

@@ -17,6 +17,20 @@ function getUsers(req, res) {
   });
 }
 
+function getCurrentUser(req, res) {
+  const currentUser = req.session.user;
+
+  db.User.findOne({
+    attributes: ['username'],
+    where: {
+      username: [currentUser],
+    },
+  })
+  .then((user) => {
+    res.send(user);
+  });
+}
+
 function getMessages(req, res) {
   console.log('Getting messages...');
   db.Message.findAll({
@@ -69,6 +83,7 @@ function createMessage(req, res) {
 
 module.exports = {
   getUsers,
+  getCurrentUser,
   getMessages,
   createMessage,
 };
