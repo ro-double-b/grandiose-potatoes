@@ -7,7 +7,7 @@ function GifSearch(props) {
     <div className="gif-container">
       {
         props.gifs.map((gif) => (
-          <Gif gifUrl={gif.images.fixed_height.url} />
+          <Gif gifUrl={gif.images.fixed_height.url} currentUser={props.currentUser} otherUser={props.otherUser} />
         ))
       }
     </div>
@@ -18,4 +18,6 @@ export default GifSearch;
 
 GifSearch.propTypes = {
   gifs: React.PropTypes.array,
+  currentUser: React.PropTypes.string,
+  otherUser: React.PropTypes.string,
 };

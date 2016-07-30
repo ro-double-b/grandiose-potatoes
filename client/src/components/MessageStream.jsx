@@ -47,7 +47,7 @@ class MessageStream extends React.Component {
           this.props.showVideoRecorder ? <InlineRecorder /> : null
         }
         {
-          this.props.showGifSearch ? <GifSearch gifs={this.props.gifs} /> : null
+          this.props.showGifSearch ? <GifSearch gifs={this.props.gifs} currentUser={this.props.currentUser} otherUser={this.props.otherUser} /> : null
         }
       </ul>
     );
@@ -58,6 +58,7 @@ MessageStream.propTypes = {
   showVideoRecorder: React.PropTypes.bool,
   showGifSearch: React.PropTypes.bool,
   currentUser: React.PropTypes.string,
+  otherUser: React.PropTypes.string,
   messages: React.PropTypes.array,
   gifs: React.PropTypes.array,
 };

@@ -34,7 +34,7 @@ export default class Login extends React.Component {
       data: {
         username: this.state.username, password: this.state.username,
       },
-    }).done(function(path){
+    }).done((path) => {
       Router.browserHistory.push(path);
     });
   }

@@ -45,6 +45,7 @@ class Profile extends React.Component {
       showGifSearch: false,
       gifSearch: "",
       gifs: [],
+      otherUser: '',
     };
 
     // console.log('currentMessages: ', this.state.currentMessages);
@@ -97,6 +98,7 @@ class Profile extends React.Component {
     // console.log(this.state.currentUser);
     this.setState({
       currentMessages: filterMessages(this.state.allMessages, this.state.currentUser, otherUser),
+      otherUser,
     });
 
     console.log(this.state.currentMessages);
@@ -106,6 +108,8 @@ class Profile extends React.Component {
     this.setState({
       videoButtonStyle: { right: "150px" },
       showVideoRecorder: true,
+      gifSearchStyle: { visibility: "hidden" },
+      showGifSearch: false,
     });
   }
 
@@ -120,6 +124,8 @@ class Profile extends React.Component {
     this.setState({
       gifSearchStyle: { visibility: "visible" },
       showGifSearch: true,
+      videoButtonStyle: { display: "none" },
+      showVideoRecorder: false,
     });
   }
 
@@ -146,7 +152,6 @@ class Profile extends React.Component {
       this.setState({
         gifs: data.data,
       });
-      console.log(this.state.gifs);
     });
   }
 
@@ -182,6 +187,7 @@ class Profile extends React.Component {
             showVideoRecorder={this.state.showVideoRecorder}
             showGifSearch={this.state.showGifSearch}
             currentUser={this.state.currentUser}
+            otherUser={this.state.otherUser}
             messages={this.state.currentMessages}
             gifs={this.state.gifs}
           />
@@ -211,13 +217,13 @@ class Profile extends React.Component {
             <li><a className="btn-floating red"><i className="material-icons">album</i></a></li>
           </ul>
         </div>
-        <div style={this.state.gifSearchStyle}>
+        <div clssName="gif-search" style={this.state.gifSearchStyle}>
           <div className="input-field col s5">
             <input id="gifSearch" type="text" onChange={this.handelGifChange} />
             <label htmlFor="gifSearch">Gif</label>
-          </div>
           <button onClick={this.handelGifSearch} className="waves-effect waves-light btn blue darken-1">Search Gif</button>
           <button onClick={this.handleCancelGifClick} className="waves-effect waves-light btn blue darken-1">Cancel</button>
+          </div>
         </div>
       </div>
     );

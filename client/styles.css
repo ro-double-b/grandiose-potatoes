@@ -92,3 +92,7 @@
   height: 600;
   overflow-y: scroll;
 }
+
+.gif-search {
+  float: right;
+}
