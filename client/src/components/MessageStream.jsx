@@ -42,13 +42,16 @@ class MessageStream extends React.Component {
             <MessageStreamItem currentUser={this.props.currentUser} message={message} key={message.createdAt} />
           ))
         }
-        <InlineRecorder />
+        {
+          this.props.showVideoRecorder ? <InlineRecorder /> : null
+        }
       </ul>
     );
   }
 }
 
 MessageStream.propTypes = {
+  showVideoRecorder: React.PropTypes.bool,
   currentUser: React.PropTypes.string,
   messages: React.PropTypes.array,
 };
