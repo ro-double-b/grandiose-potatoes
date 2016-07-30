@@ -5,11 +5,7 @@ function MessageStreamItem(props) {
 
   return (
     <li className={className}>
-      <div className="card">
-        <div className="card-image">
-          <img src="http://materializecss.com/images/sample-1.jpg" alt="Video message" />
-        </div>
-      </div>
+      <img src="http://materializecss.com/images/sample-1.jpg" alt="Video message" />
     </li>
   );
 }
