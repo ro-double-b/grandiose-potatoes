@@ -64,4 +64,6 @@
 
 .recorder canvas {
   position: absolute;
+  cursor: pointer;
+  z-index: 0;
 }
