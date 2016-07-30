@@ -45,6 +45,7 @@ class Profile extends React.Component {
 
     console.log('currentMessages: ', this.state.currentMessages);
 
+    this.handleCancelVideoClick = this.handleCancelVideoClick.bind(this);
     this.handleUserClick = this.handleUserClick.bind(this);
     this.handleVideoClick = this.handleVideoClick.bind(this);
   }
@@ -61,8 +62,13 @@ class Profile extends React.Component {
     //     };                         //
     //                                //
     // /////////////////////////////////
-
-
+    // const info = {
+    //   url: "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+    //   type: "vid",
+    //   senderName: "John Cena",
+    //   receiverName: "ryan",
+    // };
+    // createMessage(info);
     Promise.all([getUsers(), getCurrentUser(), getMessages()])
       .then((values) => {
         console.log(values[1].username);
@@ -91,6 +97,13 @@ class Profile extends React.Component {
     this.setState({
       videoButtonStyle: { right: "150px" },
       showVideoRecorder: true,
+    });
+  }
+
+  handleCancelVideoClick() {
+    this.setState({
+      videoButtonStyle: { display: "none" },
+      showVideoRecorder: false,
     });
   }
 
@@ -143,6 +156,7 @@ class Profile extends React.Component {
             <i className="large material-icons">videocam</i>
           </a>
           <ul>
+            <li onClick={this.handleCancelVideoClick} ><a className="btn-floating red"><i className="material-icons">not_interested</i></a></li>
             <li><a className="btn-floating red">POST</a></li>
             <li><a className="btn-floating red"><i className="material-icons">replay</i></a></li>
             <li><a className="btn-floating red"><i className="material-icons">stop</i></a></li>
@@ -153,5 +167,4 @@ class Profile extends React.Component {
     );
   }
 }
-
 export default Profile;
