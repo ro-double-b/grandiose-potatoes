@@ -86,3 +86,9 @@
   margin: 15px;
   box-shadow: 0 4px 14px 0 rgba(0,0,0,0.5)
 }
+
+.collection{
+  margin: 0 1rem 0;
+  height: 600;
+  overflow-y: scroll;
+}
