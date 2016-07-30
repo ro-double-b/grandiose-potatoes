@@ -37,9 +37,9 @@
 }
 
 .session {
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
 .noSession {
-  visibility: visible;
+  /*visibility: visible;*/
 }
