@@ -1,5 +1,5 @@
 import React from 'react';
-import Gif from './MessageStreamItem';
+import Gif from './Gif';
 const Router = require('react-router');
 
 export default class GifSeach extends React.Component {
@@ -19,34 +19,33 @@ export default class GifSeach extends React.Component {
       url: `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC`,
     })
     .done((data) => {
-      this.state.gifs = data.data;
-      console.log(data);
+      this.setState({
+        gifs: data.data,
+      });
+      console.log(this.state.gifs);
     });
   }
 
   render() {
     return (
       <div className="col s8 offset-s2">
-        <ul>
+        <ul className="col s8 offset-s2">
           {
             this.state.gifs.map((gif) => (
-              <Gif gif={gif} />
+              <Gif gifUrl={gif.images.fixed_height.url} />
             ))
           }
         </ul>
         <h2 className="header center blue-text blue-darken-1">Search GIf</h2>
         <br />
         <div className="row">
-          <form className="col s12" onSubmit={this.handleSubmit} >
-            <div className="row">
-              <div className="input-field col s12">
-                <input id="password" type="text" className="validate" value={this.state.gifName} onChange={this.handelGifChange} />
-                <label htmlFor="password">Gif</label>
-              </div>
+          <div className="row">
+            <div className="input-field col s12">
+              <input id="gifSearch" type="text" onChange={this.handelGifChange} />
+              <label htmlFor="gifSearch">Gif</label>
             </div>
-            <button className="waves-effect waves-light btn blue darken-1">search Gif</button>
-          </form>
-          <p>Already a user? <a href="login">Login</a></p>
+          </div>
+          <button className="waves-effect waves-light btn blue darken-1">Search Gif</button>
         </div>
       </div>
     );
