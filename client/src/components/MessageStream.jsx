@@ -12,6 +12,15 @@ function MessageStream(props) {
           ))
         }
       </ul>
+      <div className="fixed-action-btn">
+        <a className="btn-floating btn-large blue">
+          <i className="large material-icons">send</i>
+        </a>
+        <ul>
+          <li><a className="btn-floating blue"><i className="material-icons">gif</i></a></li>
+          <li><a className="btn-floating blue"><i className="material-icons">videocam</i></a></li>
+        </ul>
+      </div>
     </div>
   );
 }
