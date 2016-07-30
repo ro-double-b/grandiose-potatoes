@@ -17,6 +17,7 @@ router.post('/api/signup', authController.signup);
 router.post('/api/login', authController.login);
 
 router.get('/api/users', messageController.getUsers);
+router.get('/api/currentuser', messageController.getCurrentUser);
 router.get('/api/messages', messageController.getMessages);
 router.post('/api/messages', messageController.createMessage);
 

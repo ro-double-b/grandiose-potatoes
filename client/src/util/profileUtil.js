@@ -1,3 +1,18 @@
+function getCurrentUser() {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      type: 'GET',
+      url: '/api/currentuser',
+      success: (data) => {
+        resolve(data);
+      },
+      error: (err) => {
+        reject('Unable to retrieve current user:', err);
+      },
+    });
+  });
+}
+
 function getUsers() {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -77,6 +92,7 @@ function createMessage(info) {
 
 export {
   getUsers,
+  getCurrentUser,
   getMessages,
   filterMessages,
   createMessage,
