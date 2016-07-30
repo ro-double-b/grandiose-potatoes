@@ -5,6 +5,7 @@ function getUsers(req, res) {
   const currentUser = req.session.user;
 
   db.User.findAll({
+    attributes: ["username"],
     where: {
       username: {
         $ne: currentUser,

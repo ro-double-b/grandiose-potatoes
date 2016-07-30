@@ -2,6 +2,8 @@ import React from 'react';
 
 import { getUsers, getMessages, filterMessages, createMessage } from '../util/profileUtil.js';
 
+import User from './User';
+
 import MessageStream from './MessageStream';
 
 ////////////// MOCK DATA ////////////////////////
@@ -57,8 +59,9 @@ class Profile extends React.Component {
 
     Promise.all([getUsers(), getMessages()])
       .then((values) => {
+        console.log(values[0].map(user => user.username));
         this.setState({
-          allUsers: values[0],
+          allUsers: values[0].map(user => user.username),
           allMessages: values[1],
           showLoading: false,
         });
@@ -68,12 +71,17 @@ class Profile extends React.Component {
 
   handleClick(e) {
     const otherUser = e.target.textContent;
+    console.log(e.target.textContent);
 
     this.setState({
       currentMessages: filterMessages(this.state.allMessages, this.state.currentUser, otherUser),
     });
   }
 
+  // <li><a onClick={this.handleClick} className="collection-item light-blue-text">Ryan</a></li>
+  // <li><a onClick={this.handleClick} className="collection-item light-blue-text">Robb</a></li>
+  // <li><a onClick={this.handleClick} className="collection-item light-blue-text">John Cena</a></li>
+  // handleClick={this.handleClick}
   render() {
     return (
       <div>
@@ -83,9 +91,10 @@ class Profile extends React.Component {
         <div className="row message-box">
           <div className="col s3">
             <ul className="collection">
-              <li><a onClick={this.handleClick} className="collection-item light-blue-text">Ryan</a></li>
-              <li><a onClick={this.handleClick} className="collection-item light-blue-text">Robb</a></li>
-              <li><a onClick={this.handleClick} className="collection-item light-blue-text">John Cena</a></li>
+              {this.state.allUsers.map(user => (
+                <User otherUserName={user} />
+                )
+              )}
             </ul>
           </div>
 
