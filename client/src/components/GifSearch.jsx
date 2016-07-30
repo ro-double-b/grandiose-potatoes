@@ -7,13 +7,21 @@ export default class GifSeach extends React.Component {
     super(props);
 
     this.state = {
+      searchWords: "",
       gifs: [],
     };
     this.handelGifChange = this.handelGifChange.bind(this);
+    this.handelGifSearch = this.handelGifSearch.bind(this);
   }
 
   handelGifChange(event) {
-    const search = event.target.value.replace(' ', '+');
+    this.setState({
+      searchWords: event.target.value,
+    });
+  }
+
+  handelGifSearch() {
+    const search = this.state.searchWords;
     $.ajax({
       type: "GET",
       url: `http://api.giphy.com/v1/gifs/search?q=${search}&api_key=dc6zaTOxFJmzC`,
@@ -22,7 +30,6 @@ export default class GifSeach extends React.Component {
       this.setState({
         gifs: data.data,
       });
-      console.log(this.state.gifs);
     });
   }
 
@@ -45,7 +52,7 @@ export default class GifSeach extends React.Component {
               <label htmlFor="gifSearch">Gif</label>
             </div>
           </div>
-          <button className="waves-effect waves-light btn blue darken-1">Search Gif</button>
+          <button className="waves-effect waves-light btn blue darken-1" onClick={this.handelGifSearch}>Search Gif</button>
         </div>
       </div>
     );
